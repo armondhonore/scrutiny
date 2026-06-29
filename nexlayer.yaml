@@ -16,7 +16,7 @@ application:
       mountPath: /opt/scrutiny/config
       size: 1Gi
   - name: influxdb
-    image: influxdb:2
+    image: influxdb:latest
     servicePorts:
     - 8086
     vars:
