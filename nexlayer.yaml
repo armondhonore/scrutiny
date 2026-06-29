@@ -11,10 +11,6 @@ application:
       SCRUTINY_WEB_INFLUXDB_TOKEN: "nexlayer-influx-token"
       SCRUTINY_WEB_INFLUXDB_ORG: "nexlayer"
       SCRUTINY_WEB_INFLUXDB_BUCKET: "scrutiny"
-    volumes:
-    - name: scrutiny-config
-      mountPath: /scrutiny/config
-      size: 1Gi
   - name: influxdb
     image: influxdb:latest
     servicePorts:
