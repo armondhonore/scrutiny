@@ -12,7 +12,7 @@ application:
       SCRUTINY_WEB_INFLUXDB_ORG: "nexlayer"
       SCRUTINY_WEB_INFLUXDB_BUCKET: "scrutiny"
   - name: influxdb
-    image: influxdb:latest
+    image: influxdb:2.7
     servicePorts:
     - 8086
     vars:
