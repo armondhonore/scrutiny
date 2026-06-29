@@ -39,7 +39,7 @@ application:
   name: scrutiny
   pods:
   - name: app
-    image: ghcr.io/analogj/scrutiny:master-web
+    image: ghcr.io/analogj/scrutiny:master-omnibus
     path: /
     servicePorts:
     - 8080
