@@ -15,3 +15,18 @@ application:
     - name: scrutiny-config
       mountPath: /opt/scrutiny/config
       size: 1Gi
+  - name: influxdb
+    image: influxdb:2
+    servicePorts:
+    - 8086
+    vars:
+      DOCKER_INFLUXDB_INIT_MODE: "setup"
+      DOCKER_INFLUXDB_INIT_USERNAME: "admin"
+      DOCKER_INFLUXDB_INIT_PASSWORD: "nexlayerpass"
+      DOCKER_INFLUXDB_INIT_ORG: "nexlayer"
+      DOCKER_INFLUXDB_INIT_BUCKET: "scrutiny"
+      DOCKER_INFLUXDB_INIT_ADMIN_TOKEN: "nexlayer-influx-token"
+    volumes:
+    - name: influxdb-data
+      mountPath: /var/lib/influxdb2
+      size: 5Gi
