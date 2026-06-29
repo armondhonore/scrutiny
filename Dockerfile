@@ -1,1 +1,2 @@
-FROM ghcr.io/analogj/scrutiny:master-web
+FROM ghcr.io/analogj/scrutiny:master-omnibus
+EXPOSE 8080
