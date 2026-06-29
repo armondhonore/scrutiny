@@ -1,0 +1,32 @@
+application:
+  name: scrutiny
+  pods:
+  - name: app
+    image: ghcr.io/analogj/scrutiny:master-web
+    path: /
+    servicePorts:
+    - 8080
+    vars:
+      SCRUTINY_WEB_INFLUXDB_HOST: influxdb.pod
+      SCRUTINY_WEB_INFLUXDB_TOKEN: "nexlayer-influx-token"
+      SCRUTINY_WEB_INFLUXDB_ORG: "nexlayer"
+      SCRUTINY_WEB_INFLUXDB_BUCKET: "scrutiny"
+    volumes:
+    - name: scrutiny-config
+      mountPath: /scrutiny/config
+      size: 1Gi
+  - name: influxdb
+    image: influxdb:latest
+    servicePorts:
+    - 8086
+    vars:
+      DOCKER_INFLUXDB_INIT_MODE: "setup"
+      DOCKER_INFLUXDB_INIT_USERNAME: "admin"
+      DOCKER_INFLUXDB_INIT_PASSWORD: "nexlayerpass"
+      DOCKER_INFLUXDB_INIT_ORG: "nexlayer"
+      DOCKER_INFLUXDB_INIT_BUCKET: "scrutiny"
+      DOCKER_INFLUXDB_INIT_ADMIN_TOKEN: "nexlayer-influx-token"
+    volumes:
+    - name: influxdb-data
+      mountPath: /var/lib/influxdb2
+      size: 5Gi
